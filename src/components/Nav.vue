@@ -1,10 +1,10 @@
 <template>
-<div class="bg-red-800 text-blue-500 font-extrabold">
+<div class="bg-black text-yellow-500 font-extrabold">
 <div class="container mx-auto flex items-center justify-between">
     <!-- added router link to basicrouter icon -->
     <router-link to="/">
-    <h1 class="tracking-tighter text-3xl font-thin">Basic
-        <span class="font-normal">Router</span>
+    <h1 class="tracking-tighter text-3xl font-thin">Edgar's
+        <span class="font-normal">Recipe App</span>
     </h1>
     </router-link>
     <nav>
@@ -13,12 +13,23 @@
         <!-- notes for if need to reference later -->
         <router-link to="/">
         <li class="py-8 px-4 hover:cursor-pointer hover:bg-green-500 hover:text-green-800">Homepage</li></router-link>
-        <router-link :to="{name: 'About'}">
-         <li class="py-8 px-4 hover:cursor-pointer hover:bg-green-500 hover:text-green-800">About</li>
+        <router-link :to="{name: 'Salsas'}">
+         <li class="py-8 px-4 hover:cursor-pointer hover:bg-green-500 hover:text-green-800">Salsas </li>
         </router-link>
-        <router-link :to="{ path: '/hello', name: 'Hello'}">
-        <li class="py-8 px-4 hover:cursor-pointer hover:bg-green-500 hover:text-green-800">Hello</li>
+        <router-link :to="{ path: '/soups', name: 'Soups'}">
+        <li class="py-8 px-4 hover:cursor-pointer hover:bg-green-500 hover:text-green-800">Soups </li>
         </router-link>
+        <router-link to="/traditional">
+        <li class="py-8 px-4 hover:cursor-pointer hover:bg-green-500 hover:text-green-800">Traditional</li>
+        </router-link>
+        <router-link to="/abroad">
+        <li class="py-8 px-4 hover:cursor-pointer hover:bg-green-500 hover:text-green-800">Abroad</li>
+        </router-link>
+        
+        <router-link to="/friends">
+        <li class="py-8 px-4 hover:cursor-pointer hover:bg-green-500 hover:text-green-800 ">Enter your recipe</li>
+        </router-link>
+       
     </ul>
     </nav>
 </div>
