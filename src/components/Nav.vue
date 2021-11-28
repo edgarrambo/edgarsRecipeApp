@@ -3,8 +3,12 @@
 <div class="container mx-auto flex items-center justify-between">
     <!-- added router link to basicrouter icon -->
     <router-link to="/">
-    <h1 class="tracking-tighter text-3xl font-thin">Edgar's
-        <span class="font-normal">Recipe App</span>
+    <h1 class="tracking-tighter text-3xl font-thin"> 
+            <img src="https://img.icons8.com/plasticine/30/000000/hamburger.png"/>
+        Edgar's
+        <span class="font-normal">Recipe App 
+        </span>
+      
     </h1>
     </router-link>
     <nav>
