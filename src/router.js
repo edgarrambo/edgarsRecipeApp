@@ -4,7 +4,7 @@ import Salsas from "./pages/salsas.vue";
 import Soups from "./pages/soups.vue";
 import Traditional from "./pages/traditional.vue";
 import Abroad from "./pages/abroad.vue";
-import Friends from "./pages/friends.vue";
+import Sides from "./pages/sides.vue";
 import NotFound from "./pages/404.vue";
 
 const routes = [
@@ -28,16 +28,16 @@ const routes = [
     name: "Traditional",
     component: Traditional,
   },
-{
-  path: "/abroad",
-  name: "Abroad",
-  component: Abroad,
-},
-{
-  path: "/friends",
-  name: "Friends",
-  component: Friends,
-},
+  {
+    path: "/abroad",
+    name: "Abroad",
+    component: Abroad,
+  },
+  {
+    path: "/sides",
+    name: "Sides",
+    component: Sides,
+  },
   {
     path: "/:pathMatch(.*)*",
     name: "NotFound",
