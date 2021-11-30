@@ -1,11 +1,16 @@
 import { createRouter, createWebHistory } from "vue-router";
+import useAuth from "./composables/useAuth";
+
 import Index from "./pages/index.vue";
 import Salsas from "./pages/salsas.vue";
 import Soups from "./pages/soups.vue";
 import Traditional from "./pages/traditional.vue";
 import Abroad from "./pages/abroad.vue";
 import Sides from "./pages/sides.vue";
+import Login from "./pages/login.vue";
 import NotFound from "./pages/404.vue";
+
+const { isAuthenticated } = useAuth();
 
 const routes = [
   {
@@ -24,9 +29,21 @@ const routes = [
     component: Soups,
   },
   {
+    path: "/login",
+    name: "Login",
+    component: Login,
+  },
+  {
     path: "/traditional",
     name: "Traditional",
     component: Traditional,
+    beforeEnter: (to, from, next) => {
+      if (isAuthenticated.value) {
+        next();
+      } else {
+        next("/login");
+      }
+    },
   },
   {
     path: "/abroad",
