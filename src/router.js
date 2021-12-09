@@ -3,7 +3,6 @@ import useAuth from "./composables/useAuth";
 
 import Index from "./pages/index.vue";
 import Salsas from "./pages/salsas.vue";
-import Soups from "./pages/soups.vue";
 import Traditional from "./pages/traditional.vue";
 import Abroad from "./pages/abroad.vue";
 import Sides from "./pages/sides.vue";
@@ -22,11 +21,6 @@ const routes = [
     path: "/salsas",
     name: "Salsas",
     component: Salsas,
-  },
-  {
-    path: "/soups",
-    name: "Soups",
-    component: Soups,
   },
   {
     path: "/login",

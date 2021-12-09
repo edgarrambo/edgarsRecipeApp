@@ -2,9 +2,7 @@
 import { useRouter } from 'vue-router';
 import useAuth from '../composables/useAuth';
 const { isAuthenticated, logout} = useAuth();
-
 const router = useRouter();
-
 const loggingOut = () => {
     logout();
     router.push("/login");
@@ -38,9 +36,6 @@ const loggingOut = () => {
         </router-link>
         <router-link :to="{name: 'Salsas'}">
         <li class="px-4 py-8 hover:cursor-pointer hover:bg-green-500 hover:text-green-800">Salsas </li>
-        </router-link>
-        <router-link :to="{ path: '/soups', name: 'Soups'}">
-        <li class="px-4 py-8 hover:cursor-pointer hover:bg-green-500 hover:text-green-800">Soups </li>
         </router-link>
         <router-link to="/sides">
         <li class="px-4 py-8 hover:cursor-pointer hover:bg-green-500 hover:text-green-800 ">Sides</li>
