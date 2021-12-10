@@ -8,8 +8,10 @@
   },
   "dependencies": {
     "firebase": "^9.6.0",
+    "vee-validate": "^4.5.7",
     "vue": "^3.2.23",
-    "vue-router": "^4.0.12"
+    "vue-router": "^4.0.12",
+    "yup": "^0.32.11"
   },
   "devDependencies": {
     "@vitejs/plugin-vue": "^1.10.1",

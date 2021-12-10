@@ -1,30 +1,42 @@
 <script setup>
 import { ref } from "vue";
 import { useRouter } from "vue-router";
+
+import { useForm, useField } from 'vee-validate';
+import * as yup from "yup";
+
+const schema = yup.object({
+   username: yup.string().required().email().label("Email"),
+   password: yup.string().required().min(8).label("Password"),
+});
+
+useForm({
+   validationSchema: schema,
+});
+
+
+const { value: username, errorMessage: emailError } = useField("username");
+const { value: password, errorMessage: passwordError } = useField("password");
+
+
 import useAuth from '../composables/useAuth';
 import useError from "../composables/useError";
 
 const { isAuthenticated, login, signup, googleLogin } = useAuth();
 
-
-const username = ref("");
-const password = ref("");
-
 const router = useRouter();
 
 const logginIn = async() => {
-    login(username.value, password.value);
-    if (isAuthenticated.value) {
-        router.push("/")
-    } else {
-    setError("Invalid Username or Password");
-    }
+    await login(username.value, password.value);
+    goToHome();
 };
 
 
 const signingUp = async() => {
     await signup(username.value, password.value);
-    goToHome();
+    router.push("/")
+
+
 };
 
 const google = async() => {
@@ -37,7 +49,7 @@ const goToHome = () => {
     if (isAuthenticated.value) {
         router.push("/")
     } else {
-    setError("Invalid Username or Password");
+    setError("Invalid Email or Password");
     start();
     }
 };
@@ -53,8 +65,15 @@ const { error, setError} = useError();
 <div class="flex items-center justify-center px-3 pb-8 mx-3 mt-8 mb-8 text-2xl bg-white border-2 border-yellow-500 rounded-lg flexmt-20">
 
    <form  @submit.prevent="logginIn" class="flex flex-col p-4 space-y-4 text-xl" >
-      <input type="text" class="py-4 text-xl border-4 rounded-lg " placeholder="Username" v-model="username"/>
-       <input type="password" class="py-4 text-xl border-4 rounded-lg" placeholder="Password" v-model="password"/>
+      <input name="username"
+      type="text" class="py-4 text-xl border-4 rounded-lg " 
+      placeholder="Username" v-model="username"/>
+      <span class="text-xl text-center text-red-800 ">{{ emailError }}</span>
+       <input name="password" 
+       type="password" class="py-4 text-xl border-4 rounded-lg" 
+       placeholder="Password" v-model="password"/>
+        <span class="px-4 text-xl text-center text-red-800 ">{{ passwordError }}</span>
+
        <div class="flex space-x-2">
         <button
        @click="signingUp" 
@@ -76,6 +95,7 @@ const { error, setError} = useError();
     </form>
 </div>
 <div v-if="error"
- class="py-4 text-center text-white bg-red-600 rounded-lg" >{{ error }}</div>
+ class="py-4 font-extrabold text-center bg-red-600 rounded-lg" >{{ error }}</div>
+ 
 </template>
  
